@@ -1,7 +1,0 @@
-2020-09-21 18:53:19.504111  Error:  UNIQUE constraint failed: URL.short
-2020-09-21 18:53:55.616577  Error:  UNIQUE constraint failed: URL.short
-2020-09-21 18:54:01.295897  Error:  UNIQUE constraint failed: URL.short
-2020-09-21 18:54:02.290037  Error:  UNIQUE constraint failed: URL.short
-2020-09-21 18:54:02.839238  Error:  UNIQUE constraint failed: URL.short
-2020-09-21 18:56:59.303103  Error:  UNIQUE constraint failed: URL.short
-2020-09-21 18:57:00.912436  Error:  UNIQUE constraint failed: URL.short

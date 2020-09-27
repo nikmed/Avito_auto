@@ -1,0 +1,19 @@
+body{
+  font-family: Arial, Verdana,  sans-serif; /* Семейство шрифтов */
+  font-size: 11pt; /* Размер основного шрифта в пунктах  */
+}
+
+input{
+	border: none; 
+	border-bottom: solid black 1px;
+}
+
+#short{
+	display: none;
+}
+
+#form{
+	text-align: center; 
+	padding-top: 5%;
+}
+
