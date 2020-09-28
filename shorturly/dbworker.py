@@ -1,14 +1,15 @@
-import sqlite3 as sql
-import base62
 import datetime
+import sqlite3 as sql
 from queue import Queue
+
+import base62
 
 
 class db:
-	def __init__(self, dbname):	
+	def __init__(self, dbname):
 		self.dbname = dbname
 		self.q = Queue()
-		self.conn = sql.connect(self.dbname, check_same_thread = False)
+		self.conn = sql.connect(self.dbname, check_same_thread=False)
 		self.opened = True
 		self.cursor = self.conn.cursor()
 		self.cursor.execute('''CREATE TABLE IF NOT EXISTS URL 
@@ -16,20 +17,17 @@ class db:
 		self.conn.commit()
 		self.log = 'database_log.txt'
 
-
 	def open_db(self):
 		if self.opened == False:
-			self.conn = sql.connect(self.dbname, check_same_thread = False)
+			self.conn = sql.connect(self.dbname, check_same_thread=False)
 			self.cursor = self.conn.cursor()
 			self.opened = True
-
 
 	def close_db(self):
 		if self.opened == True:
 			self.conn.close()
 			self.opened = False
 
-	
 	def insert(self, url):
 		try:
 			self.id = self.cursor.execute("SELECT COUNT(*) FROM URL").fetchone()[0]
@@ -46,8 +44,6 @@ class db:
 				return 'This id alrady taken.', False
 			else:
 				return str(e), False
-
-
 
 	def insert_custom(self, url, custom_short_url):
 		try:
@@ -67,13 +63,12 @@ class db:
 			else:
 				return str(e), False
 
-	
 	def sequental_read(self, id):
 		try:
 			query = f"SELECT long FROM URL WHERE short = '{id}'"
 			self.cursor.execute(query)
 			link = self.cursor.fetchone()
-			if link != None:
+			if link is not None:
 				link = link[0]
 			else:
 				return 'Page not found', False
@@ -84,15 +79,13 @@ class db:
 			f.close()
 			return str(e), False
 
-
-
 	def read_task(self, id):
 		try:
-			conn = sql.connect(self.dbname, check_same_thread = False)
+			conn = sql.connect(self.dbname, check_same_thread=False)
 			query = f"SELECT long FROM URL WHERE short = '{id}'"
 			cursor = conn.execute(query)
 			link = cursor.fetchone()
-			if link != None:
+			if link is not None:
 				link = link[0]
 			else:
 				return 'Page not found', False
@@ -112,14 +105,4 @@ class db:
 			f = open(self.log, 'a')
 			f.write(str(datetime.datetime.now()) + '  Error:  ' + str(e) + '\n')
 			f.close()
-
-		
-		
-
-
-
-
-
-
-
-
+			
