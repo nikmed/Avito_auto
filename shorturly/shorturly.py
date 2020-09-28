@@ -7,15 +7,14 @@ from werkzeug.exceptions import HTTPException
 
 #Configuration
 DATABASE='database.db'
-DEBUG = False
-
+DEBUG = True
 
 
 
 app = Flask(__name__)
 app.config.update(dict(
 	DATABASE = os.path.join(app.root_path, DATABASE),
-	DEBUG = True
+	DEBUG = False
 	))
 
 
@@ -61,4 +60,4 @@ def redirect_to_url(short_url):
 if __name__ == '__main__':
     init_db()
     port = int(os.environ.get('PORT', 5050))
-    app.run(host = '127.0.0.1', port = port, debug = DEBUG)
+    app.run(host = '0.0.0.0',debug = DEBUG)

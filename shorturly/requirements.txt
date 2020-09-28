@@ -1,0 +1,7 @@
+Flask==1.1.2
+Flask-BasicAuth==0.2.0
+locust==1.2.3
+numpy==1.19.1
+pytest==6.0.2
+validators==0.18.1
+Werkzeug==1.0.1
